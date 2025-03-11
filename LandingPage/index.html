@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rodrigo Personal - Treinamento Especializado</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <style>
+    /* Reset básico */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f4f4f4;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    /* Container geral */
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px 0;
+    }
+    /* Cabeçalho */
+    header {
+      background: #222;
+      color: #fff;
+      padding: 20px 0;
+    }
+    header h1 {
+      text-align: center;
+      font-size: 2.5rem;
+    }
+    nav {
+      text-align: center;
+      margin-top: 10px;
+    }
+    nav a {
+      margin: 0 10px;
+      color: #fff;
+      font-size: 1rem;
+      transition: color 0.3s ease;
+    }
+    nav a:hover {
+      color: #f39c12;
+    }
+    /* Seção Hero */
+    #hero {
+      background: url('https://via.placeholder.com/1200x500') center/cover no-repeat;
+      height: 500px;
+      display: flex;
+      align-items: center;
+      color: #fff;
+      text-align: center;
+      position: relative;
+    }
+    #hero::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+    }
+    #hero .container {
+      position: relative;
+      z-index: 1;
+    }
+    #hero h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+    #hero p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+    }
+    .btn {
+      background: #f39c12;
+      color: #fff;
+      padding: 12px 25px;
+      border-radius: 5px;
+      transition: background 0.3s ease;
+      margin: 10px;
+      display: inline-block;
+    }
+    .btn:hover {
+      background: #e67e22;
+    }
+    /* Seção Evolução dos Alunos - Carrossel Infinito */
+    #evolucao {
+      padding: 50px 0;
+      background: #fff;
+      text-align: center;
+    }
+    #evolucao h2 {
+      font-size: 2rem;
+      margin-bottom: 30px;
+    }
+    /* Container do carrossel: mostra 3 imagens completas e um “peek” da próxima */
+    .carousel-container {
+      position: relative;
+      width: 970px; /* 3 x 300 + 2 x 10 (gaps) + ~50px de peek */
+      margin: 0 auto;
+      overflow: hidden;
+      cursor: grab;
+    }
+    /* Track do carrossel */
+    .carousel-track {
+      display: flex;
+      gap: 10px;
+      transition: transform 0.5s ease-in-out;
+    }
+    /* Cada item tem largura fixa */
+    .carousel-item {
+      flex: 0 0 auto;
+      width: 300px;
+    }
+    .carousel-item img {
+      width: 100%;
+      display: block;
+      border: 3px solid #f39c12;
+      border-radius: 10px;
+      user-select: none;
+      pointer-events: none;
+    }
+    /* Botões de navegação */
+    .prev, .next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0,0,0,0.5);
+      color: #fff;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+      font-size: 1.5rem;
+      z-index: 2;
+    }
+    .prev {
+      left: 10px;
+    }
+    .next {
+      right: 10px;
+    }
+    /* Seção Programas de Treinamento */
+    #programas {
+      padding: 50px 0;
+      text-align: center;
+      background: #f9f9f9;
+    }
+    #programas h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+    #programas p {
+      font-size: 1.1rem;
+      margin-bottom: 30px;
+      max-width: 800px;
+      margin: 0 auto 30px;
+    }
+    .btn-group {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    /* Rodapé */
+    footer {
+      background: #222;
+      color: #fff;
+      padding: 30px 0;
+      text-align: center;
+    }
+    footer h3 {
+      margin-bottom: 15px;
+    }
+    .social-links {
+      margin-bottom: 15px;
+    }
+    .social-links a {
+      margin: 0 10px;
+      font-size: 1.2rem;
+      transition: color 0.3s ease;
+    }
+    .social-links a:hover {
+      color: #f39c12;
+    }
+    footer p {
+      font-size: 0.9rem;
+    }
+    /* Responsividade básica */
+    @media (max-width: 768px) {
+      #hero h2 {
+        font-size: 2rem;
+      }
+      #hero p {
+        font-size: 1rem;
+      }
+      .btn-group {
+        flex-direction: column;
+      }
+      .carousel-container {
+        width: 90%;
+      }
+      .carousel-item {
+        width: 80%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Cabeçalho -->
+  <header>
+    <div class="container">
+      <h1>Rodrigo Personal</h1>
+      <nav>
+        <a href="#hero">Home</a>
+        <a href="#evolucao">Evolução</a>
+        <a href="#programas">Programas</a>
+        <a href="#contato">Contato</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Seção Hero -->
+  <section id="hero">
+    <div class="container">
+      <h2>Transforme seu Corpo e sua Vida</h2>
+      <p>Treinamento online personalizado para você atingir seus objetivos de forma eficiente e segura.</p>
+      <a href="#programas" class="btn">Veja Nossos Programas</a>
+    </div>
+  </section>
+
+  <!-- Seção Evolução dos Alunos com Carrossel Infinito -->
+  <section id="evolucao">
+    <div class="container">
+      <h2>Evolução dos Alunos</h2>
+      <div class="carousel-container">
+        <div class="carousel-track">
+          <!-- Ordem original: 1 2 3 4 5 6 7 -->
+          <div class="carousel-item"><img src="./Imagens/evolucao1.jpg" alt="Evolução do Aluno 1"></div>
+          <div class="carousel-item"><img src="./Imagens/evolucao2.jpg" alt="Evolução do Aluno 2"></div>
+          <div class="carousel-item"><img src="./Imagens/evolucao3.jpg" alt="Evolução do Aluno 3"></div>
+          <div class="carousel-item"><img src="./Imagens/evolucao4.jpg" alt="Evolução do Aluno 4"></div>
+          <div class="carousel-item"><img src="./Imagens/evolucao5.jpg" alt="Evolução do Aluno 5"></div>
+          <div class="carousel-item"><img src="./Imagens/evolucao6.jpg" alt="Evolução do Aluno 6"></div>
+          <div class="carousel-item"><img src="./Imagens/evolucao7.jpg" alt="Evolução do Aluno 7"></div>
+        </div>
+        <button class="prev">&#10094;</button>
+        <button class="next">&#10095;</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Seção Programas de Treinamento -->
+  <section id="programas">
+    <div class="container">
+      <h2>Escolha o Treinamento que se Adapta a Você</h2>
+      <p>Rodrigo é especialista em transformar vidas com treinos online personalizados. Confira abaixo as opções e escolha o que melhor atende seus objetivos:</p>
+      <div class="btn-group">
+        <!-- Botão Emagrecimento -->
+        <a class="btn" 
+           href="https://wa.me/5511954719911?text=Olá%20Rodrigo,%20gostaria%20de%20saber%20mais%20sobre%20o%20programa%20de%20EMAGRECIMENTO.%20Poderia%20me%20ajudar?" 
+           target="_blank">
+           Emagrecimento
+        </a>
+      
+        <!-- Botão Ganho de Massa -->
+        <a class="btn" 
+           href="https://wa.me/5511954719911?text=Olá%20Rodrigo,%20tenho%20interesse%20no%20programa%20de%20GANHO%20DE%20MASSA%20MUSCULAR.%20Como%20funciona?" 
+           target="_blank">
+           Ganho de Massa
+        </a>
+      
+        <!-- Botão Funcional -->
+        <a class="btn" 
+           href="https://wa.me/5511954719911?text=Olá%20Rodrigo,%20quero%20melhorar%20minha%20qualidade%20de%20vida%20com%20o%20treino%20FUNCIONAL.%20Por%20onde%20começo?" 
+           target="_blank">
+           Funcional
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Seção Contato/Redes Sociais -->
+<footer id="contato">
+    <div class="container">
+      <h3>Faça parte do time!</h3>
+      <div class="social-links">
+          <a href="https://www.instagram.com/personal_rodrigorsilva/" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://api.whatsapp.com/send/?phone=5511954719911&text&type=phone_number&app_absent=0" target="_blank"><i class="fab fa-whatsapp"></i></a>
+          <a href="https://tiktok.com" target="_blank"><i class="fab fa-tiktok"></i></a>
+      </div>
+      <p>&copy; 2025 Rodrigo Personal. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- JavaScript para Carrossel Infinito com Drag (Swipe) -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const track = document.querySelector('.carousel-track');
+      let items = Array.from(track.children);
+      const itemsPerPage = 3; // Número de itens visíveis
+      const gap = 10; // Espaço entre os itens (em px)
+      const threshold = 50; // Distância mínima para disparar o swipe
+
+      // Variáveis para controle do drag
+      let isDragging = false;
+      let startX = 0;
+
+      // Clona os itens para criar o loop infinito
+      function cloneItems() {
+        // Guarde o total de itens originais
+        const originalCount = items.length;
+        // Clona os últimos "itemsPerPage" e insere no início
+        for (let i = originalCount - itemsPerPage; i < originalCount; i++) {
+          const clone = items[i].cloneNode(true);
+          track.insertBefore(clone, track.firstChild);
+        }
+        // Clona os primeiros "itemsPerPage" e insere no fim
+        for (let i = 0; i < itemsPerPage; i++) {
+          const clone = items[i].cloneNode(true);
+          track.appendChild(clone);
+        }
+        items = Array.from(track.children);
+      }
+      cloneItems();
+
+      // Índice inicial: pule os clones do início
+      let currentIndex = itemsPerPage;
+      // Calcula a largura de um item (incluindo gap)
+      function getItemWidth() {
+        return items[currentIndex].offsetWidth + gap;
+      }
+      // Atualiza a posição do carrossel
+      function updateCarousel(animate = true) {
+        track.style.transition = animate ? 'transform 0.5s ease-in-out' : 'none';
+        const offset = -currentIndex * getItemWidth();
+        track.style.transform = `translateX(${offset}px)`;
+      }
+      updateCarousel(false);
+
+      // Ajusta os limites usando a quantidade de itens originais
+      function checkBoundaries() {
+        const originalCount = items.length - 2 * itemsPerPage;
+        if (currentIndex >= itemsPerPage + originalCount) {
+          currentIndex -= originalCount;
+          updateCarousel(false);
+        } else if (currentIndex < itemsPerPage) {
+          currentIndex += originalCount;
+          updateCarousel(false);
+        }
+      }
+
+      // Funções de navegação
+      function nextSlide() {
+        currentIndex++;
+        updateCarousel();
+        setTimeout(checkBoundaries, 500);
+      }
+      function prevSlide() {
+        currentIndex--;
+        updateCarousel();
+        setTimeout(checkBoundaries, 500);
+      }
+
+      // Eventos dos botões
+      document.querySelector('.next').addEventListener('click', nextSlide);
+      document.querySelector('.prev').addEventListener('click', prevSlide);
+
+      // Eventos para drag (mouse e touch)
+      function dragStart(e) {
+        isDragging = true;
+        startX = e.type.includes('mouse') ? e.pageX : e.touches[0].clientX;
+        track.style.transition = 'none';
+      }
+      function dragMove(e) {
+        if (!isDragging) return;
+        const currentX = e.type.includes('mouse') ? e.pageX : e.touches[0].clientX;
+        const diff = currentX - startX;
+        const offset = -currentIndex * getItemWidth() + diff;
+        track.style.transform = `translateX(${offset}px)`;
+      }
+      function dragEnd(e) {
+        if (!isDragging) return;
+        isDragging = false;
+        const endX = e.type.includes('mouse') ? e.pageX : e.changedTouches[0].clientX;
+        const diff = endX - startX;
+        if (Math.abs(diff) > threshold) {
+          diff < 0 ? nextSlide() : prevSlide();
+        } else {
+          updateCarousel();
+        }
+      }
+      track.addEventListener('mousedown', dragStart);
+      track.addEventListener('mousemove', dragMove);
+      track.addEventListener('mouseup', dragEnd);
+      track.addEventListener('mouseleave', dragEnd);
+      track.addEventListener('touchstart', dragStart);
+      track.addEventListener('touchmove', dragMove);
+      track.addEventListener('touchend', dragEnd);
+    });
+  </script>
+</body>
+</html>
