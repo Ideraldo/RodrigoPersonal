@@ -95,6 +95,36 @@
     .btn:hover {
       background: #e67e22;
     }
+    /* Seção Benefícios */
+    #beneficios {
+      padding: 50px 0;
+      text-align: center;
+      background: #f9f9f9;
+    }
+    #beneficios h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+    .benefit-cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 30px;
+    }
+    .benefit-cards .card {
+      background: #fff;
+      border: 1px solid #ddd;
+      padding: 20px;
+      width: 300px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .benefit-cards .card h3 {
+      margin-bottom: 10px;
+      font-size: 1.2rem;
+      color: #f39c12;
+    }
     /* Seção Evolução dos Alunos - Carrossel Infinito */
     #evolucao {
       padding: 50px 0;
@@ -123,10 +153,13 @@
     .carousel-item {
       flex: 0 0 auto;
       width: 300px;
+      height: 300px; /* Define uma altura fixa para todos os itens */
+      overflow: hidden; /* Esconde as partes que excederem o container */
     }
     .carousel-item img {
       width: 100%;
-      display: block;
+      height: 100%;
+      object-fit: cover; /* A imagem cobre todo o container sem distorção */
       border: 3px solid #f39c12;
       border-radius: 10px;
       user-select: none;
@@ -173,6 +206,67 @@
       flex-wrap: wrap;
       gap: 20px;
     }
+    /* Seção Depoimentos */
+    #depoimentos {
+      padding: 50px 0;
+      text-align: center;
+      background: #fff;
+    }
+    #depoimentos h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+    .testimonial-cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 30px;
+    }
+    .testimonial-cards .testimonial {
+      background: #fff;
+      border: 1px solid #ddd;
+      padding: 20px;
+      width: 400px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      font-style: italic;
+    }
+    .testimonial-cards .testimonial span {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+      color: #f39c12;
+    }
+    /* Seção Chamada para Ação (CTA) */
+    #cta {
+      padding: 50px 0;
+      text-align: center;
+      background: #e7e7e7;
+    }
+    #cta h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+    #cta p {
+      margin-bottom: 15px;
+      font-size: 1.1rem;
+    }
+    /* Seção Blog */
+    #blog {
+      padding: 50px 0;
+      text-align: center;
+      background: #fff;
+    }
+    #blog h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+    #blog p {
+      font-size: 1.1rem;
+      max-width: 800px;
+      margin: 0 auto 20px;
+    }
     /* Rodapé */
     footer {
       background: #222;
@@ -214,6 +308,10 @@
       .carousel-item {
         width: 80%;
       }
+      .benefit-cards, .testimonial-cards {
+        flex-direction: column;
+        align-items: center;
+      }
     }
   </style>
 </head>
@@ -224,8 +322,11 @@
       <h1>Rodrigo Personal</h1>
       <nav>
         <a href="#hero">Home</a>
+        <a href="#beneficios">Benefícios</a>
         <a href="#evolucao">Evolução</a>
         <a href="#programas">Programas</a>
+        <a href="#depoimentos">Depoimentos</a>
+        <a href="#blog">Blog</a>
         <a href="#contato">Contato</a>
       </nav>
     </div>
@@ -234,9 +335,30 @@
   <!-- Seção Hero -->
   <section id="hero">
     <div class="container">
-      <h2>Transforme seu Corpo e sua Vida</h2>
-      <p>Treinamento online personalizado para você atingir seus objetivos de forma eficiente e segura.</p>
+      <h2>Transforme seu corpo e sua vida com treinos personalizados que se encaixam na sua rotina!</h2>
+      <p>Descubra como é possível alcançar seus objetivos de forma eficiente e prazerosa, sem sacrifícios extremos.</p>
       <a href="#programas" class="btn">Veja Nossos Programas</a>
+    </div>
+  </section>
+
+  <!-- Seção Benefícios -->
+  <section id="beneficios">
+    <div class="container">
+      <h2>Benefícios Exclusivos</h2>
+      <div class="benefit-cards">
+        <div class="card">
+          <h3>Treinos Personalizados</h3>
+          <p>Programas de exercícios adaptados às suas necessidades e preferências, garantindo resultados mais rápidos e duradouros.</p>
+        </div>
+        <div class="card">
+          <h3>Acompanhamento Profissional</h3>
+          <p>Suporte contínuo para manter você motivada e no caminho certo.</p>
+        </div>
+        <div class="card">
+          <h3>Flexibilidade de Horários</h3>
+          <p>Treine nos momentos que melhor se encaixam na sua agenda, sem comprometer outras responsabilidades.</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -246,14 +368,14 @@
       <h2>Evolução dos Alunos</h2>
       <div class="carousel-container">
         <div class="carousel-track">
-          <!-- Ordem original: 1 2 3 4 5 6 7 -->
+          <div class="carousel-item"><img src="./Imagens/evolucao7.jpg" alt="Evolução do Aluno 7"></div>
+          <div class="carousel-item"><img src="./Imagens/evolucao6.jpg" alt="Evolução do Aluno 6"></div>
+          <div class="carousel-item"><img src="./Imagens/evolucao9.jpg" alt="Evolução do Aluno 9"></div>
           <div class="carousel-item"><img src="./Imagens/evolucao1.jpg" alt="Evolução do Aluno 1"></div>
           <div class="carousel-item"><img src="./Imagens/evolucao2.jpg" alt="Evolução do Aluno 2"></div>
           <div class="carousel-item"><img src="./Imagens/evolucao3.jpg" alt="Evolução do Aluno 3"></div>
           <div class="carousel-item"><img src="./Imagens/evolucao4.jpg" alt="Evolução do Aluno 4"></div>
           <div class="carousel-item"><img src="./Imagens/evolucao5.jpg" alt="Evolução do Aluno 5"></div>
-          <div class="carousel-item"><img src="./Imagens/evolucao6.jpg" alt="Evolução do Aluno 6"></div>
-          <div class="carousel-item"><img src="./Imagens/evolucao7.jpg" alt="Evolução do Aluno 7"></div>
           <div class="carousel-item"><img src="./Imagens/evolucao8.jpg" alt="Evolução do Aluno 8"></div>
         </div>
         <button class="prev">&#10094;</button>
@@ -266,34 +388,56 @@
   <section id="programas">
     <div class="container">
       <h2>Escolha o Treinamento que se Adapta a Você</h2>
-      <p>Rodrigo é especialista em transformar vidas com treinos online personalizados. Confira abaixo as opções e escolha o que melhor atende seus objetivos:</p>
+      <p>Sou especialista em transformar vidas através do exercício físico. Escolha a opção que melhor atende seus objetivos:</p>
       <div class="btn-group">
         <!-- Botão Emagrecimento -->
         <a class="btn" 
-           href="https://wa.me/5511954719911?text=Olá%20Rodrigo,%20gostaria%20de%20saber%20mais%20sobre%20o%20programa%20de%20EMAGRECIMENTO.%20Poderia%20me%20ajudar?" 
-           target="_blank">
-           Emagrecimento
+          href="https://wa.me/5511954719911?text=Olá%20Rodrigo,%20gostaria%20de%20saber%20mais%20sobre%20o%20programa%20de%20EMAGRECIMENTO.%20Poderia%20me%20ajudar?" 
+          target="_blank">
+          Emagrecer
         </a>
       
         <!-- Botão Ganho de Massa -->
         <a class="btn" 
-           href="https://wa.me/5511954719911?text=Olá%20Rodrigo,%20tenho%20interesse%20no%20programa%20de%20GANHO%20DE%20MASSA%20MUSCULAR.%20Como%20funciona?" 
-           target="_blank">
-           Ganho de Massa
-        </a>
-      
-        <!-- Botão Funcional -->
-        <a class="btn" 
-           href="https://wa.me/5511954719911?text=Olá%20Rodrigo,%20quero%20melhorar%20minha%20qualidade%20de%20vida%20com%20o%20treino%20FUNCIONAL.%20Por%20onde%20começo?" 
-           target="_blank">
-           Funcional
+          href="https://wa.me/5511954719911?text=Olá%20Rodrigo,%20tenho%20interesse%20no%20programa%20de%20GANHO%20DE%20MASSA%20MUSCULAR.%20Como%20funciona?" 
+          target="_blank">
+          Ganho de massa
         </a>
       </div>
     </div>
   </section>
 
-  <!-- Seção Contato/Redes Sociais -->
-<footer id="contato">
+  <!-- Seção Depoimentos de Clientes -->
+  <section id="depoimentos">
+    <div class="container">
+      <h2>Depoimentos de Clientes</h2>
+      <div class="testimonial-cards">
+        <div class="testimonial">
+          <p>"Com os treinos do Rodrigo Personal, transformei minha vida! Em poucos meses, alcancei resultados que nunca imaginei."</p>
+          <span>- Ana Souza</span>
+        </div>
+        <div class="testimonial">
+          <p>"A flexibilidade dos horários e o acompanhamento profissional fizeram toda a diferença na minha jornada."</p>
+          <span>- Carlos Lima</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Seção Chamada para Ação (CTA) e Ofertas Especiais -->
+  <section id="cta">
+    <div class="container">
+      <h2>Agende uma avaliação gratuita</h2>
+      <p>Dê o primeiro passo rumo à sua transformação!</p>
+      <p><strong>Vagas limitadas para o programa de transformação corporal. Garanta a sua antes que acabem!</strong></p>
+      <a href="https://wa.me/5511954719911?text=Olá%20Rodrigo,%20gostaria%20de%20agendar%20minha%20avaliação%20gratuita!" class="btn">Agende Agora</a>
+      <p>Descubra o segredo que está ajudando muitas pessoas a conquistarem o corpo dos sonhos em menos tempo do que imaginavam!</p>
+      <p>Mais de 100 clientes satisfeitos já transformaram suas vidas com nossos treinos personalizados. Junte-se a eles!</p>
+    </div>
+  </section>
+
+  <!-- Rodapé / Contato -->
+  <footer id="contato">
     <div class="container">
       <h3>Faça parte do time!</h3>
       <div class="social-links">
