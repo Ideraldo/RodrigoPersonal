@@ -1246,6 +1246,7 @@
         if (!isDragging) return;
         const x    = e.type.includes('mouse') ? e.pageX : e.touches[0].clientX;
         const diff = x - startX;
+        if (Math.abs(diff) > 5) e.preventDefault();
         track.style.transform = `translateX(${-currentIndex * itemWidth() + diff}px)`;
       }
       function dragEnd(e) {
@@ -1261,7 +1262,7 @@
       track.addEventListener('mouseup',    dragEnd);
       track.addEventListener('mouseleave', dragEnd);
       track.addEventListener('touchstart', dragStart, { passive: true });
-      track.addEventListener('touchmove',  dragMove,  { passive: true });
+      track.addEventListener('touchmove',  dragMove,  { passive: false });
       track.addEventListener('touchend',   dragEnd);
 
       // Recalculate on resize
